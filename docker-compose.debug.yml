@@ -1,0 +1,10 @@
+version: '2.1'
+
+services:
+  rails-scavengerhunt:
+    image: rails-scavengerhunt
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+        - 3000:3000
