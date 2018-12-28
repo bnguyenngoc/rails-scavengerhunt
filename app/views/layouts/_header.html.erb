@@ -1,0 +1,35 @@
+<!-- Navigation -->
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <%= link_to 'ScavengerHunt', root_path, class: 'navbar-brand'%>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+                <% if current_user %>
+                    <span class="navbar-text">Hello <%= current_user.name%></span>
+                    <li class="nav-item "> 
+                    <%= link_to "Logout", '/logout', class: 'nav-link' %>
+                    </li>
+                <% else %>
+                    <li class="nav-item">
+                        <%= form_tag '/login' do %>
+                            <span class="navbar-text">Email:</span> <%= text_field_tag :email %>
+                            <span class="navbar-text">Password:</span><%= password_field_tag :password %>
+                            <%= submit_tag "Log in",class: 'btn btn-outline-primary my-2 my-sm-0' %>
+                        <% end %>
+                    </li>
+                <% end %>
+        </ul>
+        </div>
+    </div>
+</nav>
