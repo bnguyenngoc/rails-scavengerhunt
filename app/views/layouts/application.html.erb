@@ -10,11 +10,13 @@
   </head>
 
   <body>
-    <% if current_user %>
-      Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %>
-    <% else %>
-      <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
-    <% end %>
-    <%= yield %>
+    <%= render :partial => "layouts/header" %>
+    
+    <div class="container" style="padding-top: 54px;">
+      <%= yield %>
+    </div>
+    
+    <%= render :partial => 'layouts/footer'%>
+    
   </body>
 </html>
