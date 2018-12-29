@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_28_220325) do
+ActiveRecord::Schema.define(version: 2018_12_29_054443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,13 +26,36 @@ ActiveRecord::Schema.define(version: 2018_12_28_220325) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "team_relationships", force: :cascade do |t|
+    t.bigint "team_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_team_relationships_on_team_id"
+    t.index ["user_id"], name: "index_team_relationships_on_user_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name"
+    t.text "tagline"
+    t.text "url"
+    t.bigint "captain_id"
+    t.integer "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["captain_id"], name: "index_teams_on_captain_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "role", default: 0
+    t.integer "role", default: 1
   end
 
+  add_foreign_key "team_relationships", "teams"
+  add_foreign_key "team_relationships", "users"
+  add_foreign_key "teams", "users", column: "captain_id"
 end

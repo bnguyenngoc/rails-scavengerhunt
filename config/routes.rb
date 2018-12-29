@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'teams_relationships/join'
+  get 'teams_relationships/leave'
   root 'pages#main'
   get 'pages/main'
 
@@ -17,5 +19,13 @@ Rails.application.routes.draw do
 
   # routes for challenges
   resources :challenges
+
+  #routes for teams
+  resources :teams do
+    member do
+      get 'join', to: 'teams_relationships#join'
+      get 'leave', to: 'teams_relationships#leave'
+    end
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

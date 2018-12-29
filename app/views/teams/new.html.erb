@@ -1,0 +1,28 @@
+<div class="panel panel-default col-12 ">
+    <div class="panel-heading">
+      <h1>New Team</h1>
+    </div>
+    <hr>
+    <div class="panel-body col-6">
+    <%= render 'shared/errors', object: @team %>
+
+        <%= form_for @team do |f| %> 
+            <div class="form-group">
+                <%= f.label :name %>
+                <%= f.text_field :name, class: 'form-control', required: true %>
+            </div>
+            <div class="form-group">
+                <%= f.label :tagline %>
+                <%= f.text_field :tagline, class: 'form-control' %> 
+            </div>
+            <div class="form-group">
+                <%= f.label :url %> 
+                <%= f.text_field :url, class: 'form-control' %>
+            </div>
+            <div class="btn-group-justified">
+                <%=f.submit "Submit", class: 'btn btn-primary' %>
+                <%= link_to "Back", :back,  class: "btn btn-outline-danger"  %>
+            </div> 
+        <% end %>
+    </div>
+</div>
