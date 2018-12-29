@@ -2,7 +2,7 @@ class ChallengePolicy < ApplicationPolicy
     attr_reader :user, :challenge
 
     def initialize(user, challenge)
-        @user = user
+        @user = user || User.new
         @challenge = challenge
     end
 
@@ -10,6 +10,9 @@ class ChallengePolicy < ApplicationPolicy
         user.role == 'admin'
     end
 
+    def edit?
+        user.role == 'admin'
+    end
     def update?
         user.role == 'admin'
     end

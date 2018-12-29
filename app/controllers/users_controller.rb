@@ -6,12 +6,33 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new(user_params)
+    @user = User.new(user_params)
+    if User.find_by_email(user.email).present?
+      flash[:danger] = "Account with email already exists"
+      redirect_to '/signup'
+    end
     if user.save
       session[:user_id] = user.id
       redirect_to '/'
     else
       redirect_to '/signup'
+    end
+  end
+
+  def edit
+    @user = User.find(params[:id])
+    authorize @user, policy_class: UserPolicy
+  end
+
+  def update
+    @user = User.find(session[:user_id])
+    authorize @user
+    if @user.update_attributes(user_params)
+      flash[:success] = 'User updated Successfully'
+      redirect_to root_path
+    else
+      flash[:danger] = 'Error updating user'
+      render 'edit'
     end
   end
 

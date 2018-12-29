@@ -24,6 +24,7 @@ class ChallengesController < ApplicationController
 
     def edit
         @challenge = Challenge.find(params[:id])
+        authorize @challenge
     end
 
     def update

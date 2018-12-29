@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   # receive the form and create a user in our database using the data given to us by the user.
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
+  get '/users/:id' => 'users#edit'
+  put '/users/:id' => 'users#update'
 
   # these routes are for showing users a login form, logging them in, and logging them out.
   post '/login' => 'sessions#create'
