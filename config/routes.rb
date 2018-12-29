@@ -12,5 +12,8 @@ Rails.application.routes.draw do
   # these routes are for showing users a login form, logging them in, and logging them out.
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
+
+  # routes for challenges
+  resources :challenges
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

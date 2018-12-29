@@ -17,6 +17,7 @@ run-dev:
 
 bundle-install:
 	docker-compose run web bundle install
+	docker-compose -f docker-compose.yml build
 
 run-dev-detached:
 	docker-compose -f docker/docker-compose.yml up -d

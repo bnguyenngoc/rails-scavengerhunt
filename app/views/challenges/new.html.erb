@@ -1,0 +1,40 @@
+<div class="panel panel-default col-12 ">
+    <div class="panel-heading">
+      <h1>New Challenge</h1>
+    </div>
+    <hr>
+    <div class="panel-body col-6">
+    <%= render 'shared/errors', object: @challenge %>
+
+        <%= form_for @challenge do |f| %> 
+            <div class="form-group">
+                <%= f.label :title %>
+                <%= f.text_field :title, class: 'form-control', required: true %>
+            </div>
+            <div class="form-group">
+                <%= f.label :description %>
+                <%= f.text_area :description, class: 'form-control' %> 
+            </div>
+            <div class="form-group">
+                <%= f.label :score %> 
+                <%= f.number_field :score, class: 'form-control', required: true %>
+            </div>
+            <div class="form-group">
+                <%= f.label :judgenote %> 
+                <%= f.text_area :judgenote, class: 'form-control' %> 
+            </div>
+            <div class="form-group">
+                <%= f.label :keyword %> 
+                <%= f.text_field :keyword, class: 'form-control' %> 
+            </div>
+            <div class="form-check">
+                <%= f.check_box :published, class: 'form-check-input' %>
+                <%= f.label :published, class: 'form-check-label' %>  
+            </div>
+            <div class="btn-group-justified">
+                <%=f.submit "Submit", class: 'btn btn-primary' %>
+                <%= link_to "Back", :back,  class: "btn btn-outline-danger"  %>
+            </div> 
+        <% end %>
+    </div>
+</div>

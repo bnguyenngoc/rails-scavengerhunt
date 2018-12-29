@@ -2,8 +2,11 @@
     <div class="panel-heading">
       <h1>Sign up</h1>
     </div>
+
+    <%= render 'shared/errors', object: @user %>
+
     <div class="panel-body col-6">
-        <%= form_for :user, url: '/users' do |f| %> 
+        <%= form_for @user, url: '/users' do |f| %> 
             <div class="form-group">
                 <%= f.label :name %>
                 <%= f.text_field :name, class: 'form-control', required: true %>
