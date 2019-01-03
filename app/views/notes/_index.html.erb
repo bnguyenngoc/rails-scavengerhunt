@@ -1,0 +1,15 @@
+<% @notes.each do |n|%>
+    <div class="card">
+        <div class="card-body">
+            <div class="row float-right">
+                <p class="float-right"><%= n.created_at.strftime('%B %d %Y %H:%M') %></p>    
+            </div>
+            <div class="row">
+                <p><%= n.user.name %></p>
+            </div>
+            <div class="row">
+                <p><%= n.content %></p>
+            </div>
+        </div>
+    </div>
+<% end %>

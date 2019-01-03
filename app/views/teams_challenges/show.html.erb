@@ -1,9 +1,9 @@
-<div class="panel panel-default col-12 ">
-    <div class="panel-heading">
-      <h1><%= @team_challenge.challenge %></h1>
+<div class="card card-group col-12 ">
+    <div class="card-header">
+      <h1><%= @team_challenge.challenge.title %></h1>
     </div>
     <hr>
-    <div class="panel-body col-6">
+    <div class="card-body col-6">
     <%= render 'shared/errors', object: @team_challenge %>
 
         <%= form_for @team_challenge, url: submit_challenge_path do |f| %>
@@ -26,5 +26,14 @@
                 <%= link_to "Back", :back,  class: "btn btn-outline-danger"  %>
             </div> 
         <% end %>
+
+    </div>
+</div>
+<div class="card card-group col-12" style="margin-top: 5px">
+    <div class="card-body col-12">
+        <%= render partial: 'notes/index', :locals => {:notes => @notes} %>
+    </div>
+    <div class="card-body col-12">
+        <%= render partial: 'notes/new', :locals => {:note => @note}%>
     </div>
 </div>

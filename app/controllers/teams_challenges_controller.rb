@@ -3,12 +3,13 @@
 class TeamsChallengesController < ApplicationController
   def show
     team_relation = TeamRelationship.where(user_id: current_user.id).first
+    # @challenge = Challenge.find(params[:id])
     team = team_relation.present? ? Team.where(id: team_relation.team_id).first : Team.where(captain_id: current_user.id).first
     if team.blank?
       flash[:danger] = 'Must be in a team to submit challenges'
       redirect_to challenges_path
     end
-    team_challenge = TeamChallenge.where(team_id: team.id, challenge_id: params[:id])
+    team_challenge = TeamChallenge.where(team_id: team.id, challenge_id: params[:id]).first
     @team_challenge = team_challenge.present? ? team_challenge : TeamChallenge.new(team_id: team.id, challenge_id: params[:id])
   end
 
@@ -42,6 +43,8 @@ class TeamsChallengesController < ApplicationController
 
   def edit
     @team_challenge = TeamChallenge.find(params[:id])
+    @note = Note.new(team_challenge_id: @team_challenge.id)
+    @notes = Note.where(team_challenge_id: @team_challenge.id)
     render 'show'
   end
 

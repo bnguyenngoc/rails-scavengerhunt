@@ -23,7 +23,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :teams_challenges, only: %i[index edit]
+  resources :teams_challenges, only: %i[index edit] do
+    member do
+      post 'notes', to: 'notes#create'
+      # resources :notes, only: %i[create update destroy]
+    end
+  end
   # routes for teams
   resources :teams do
     member do
