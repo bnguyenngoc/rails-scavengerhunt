@@ -13,15 +13,36 @@ class TeamsChallengesController < ApplicationController
   end
 
   def submit
-    @team_challenge = TeamChallenge.new(team_challenge_params)
-
-    if @team_challenge.save
-      flash[:success] = 'Challenge Submitted'
-      redirect_to challenges_path
+    challenge = TeamChallenge.new(team_challenge_params)
+    @team_challenge = TeamChallenge.where(team_id: challenge.team_id, challenge_id: challenge.challenge_id).first.presence || challenge
+    # if team_challenge has an id, we will update instead of saving
+    if @team_challenge.id
+      if @team_challenge.update(team_challenge_params)
+        flash[:success] = 'Challenge updated'
+        redirect_to challenges_path
+      else
+        flash[:danger] = 'Error creating team'
+        render 'show'
+      end
     else
-      flash[:danger] = 'Error creating team'
-      render 'show'
+      if @team_challenge.save
+        flash[:success] = 'Challenge Submitted'
+        redirect_to challenges_path
+      else
+        flash[:danger] = 'Error creating team'
+        render 'show'
+      end
     end
+  end
+
+  def index
+    @team_challenges = TeamChallenge.all.order('created_at')
+    authorize @team_challenges
+  end
+
+  def edit
+    @team_challenge = TeamChallenge.find(params[:id])
+    render 'show'
   end
 
   private

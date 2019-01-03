@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'teams_challenges/show'
-  get 'teams_challenges/submit'
   root 'pages#main'
   get 'pages/main'
 
@@ -21,10 +19,11 @@ Rails.application.routes.draw do
   resources :challenges do
     member do
       get 'show', to: 'teams_challenges#show'
-      post 'submit', to: 'teams_challenges#submit'
+      match 'submit' => 'teams_challenges#submit', as: :submit, via: %i[post put patch]
     end
   end
 
+  resources :teams_challenges, only: %i[index edit]
   # routes for teams
   resources :teams do
     member do

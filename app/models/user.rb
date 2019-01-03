@@ -11,6 +11,6 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :password, presence: true
   validates :password_confirmation, presence: true
-  has_one :team
+  has_one :team, through: :team_relationships, source: :team
   enum role: %i[standard judge admin]
 end

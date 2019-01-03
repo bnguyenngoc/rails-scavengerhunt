@@ -11,7 +11,9 @@
                     <th>Captain</th>
                     <th>Score</th>
                     <th>Actions</th>
+                    <% if current_user && current_user.role == 'admin'%>
                     <th>Admin</th>
+                    <% end %>
                 </tr>
             </thead>
             <tbody>
@@ -26,8 +28,7 @@
                         |
                         <%= link_to 'leave', leave_team_path(t) %>
                         </td>
-                        |
-                        <%= link_to 'submit', %>
+                        
                         <td> 
                             <% if policy(t).update? %>
                                 <%= link_to 'Edit', edit_team_path(t)%>

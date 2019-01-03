@@ -13,6 +13,7 @@ class TeamsController < ApplicationController
     @team = Team.new(team_params)
     @team[:captain_id] = current_user.id
     if @team.save
+      current_team_id << @team.id
       flash[:success] = 'Team was created'
       redirect_to teams_path
     else

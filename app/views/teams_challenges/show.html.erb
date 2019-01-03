@@ -22,7 +22,7 @@
                 <%= f.select :status, TeamChallenge.statuses.keys %>
             </div>
             <div class="btn-group-justified">
-                <%=f.submit "Submit", class: 'btn btn-primary' %>
+                <%= f.submit "Submit", class: 'btn btn-primary' %>
                 <%= link_to "Back", :back,  class: "btn btn-outline-danger"  %>
             </div> 
         <% end %>
