@@ -11,6 +11,7 @@
                     <th>Captain</th>
                     <th>Score</th>
                     <th>Actions</th>
+                    <th>Admin</th>
                 </tr>
             </thead>
             <tbody>
@@ -19,7 +20,14 @@
                         <td><%= t.name %></td>
                         <td><%= t.tagline %></td>
                         <td><%= t.captain_id %></td>
-                        <td><%= t.score %></td>
+                        <td>To be calculated in TeamsChallenge</td>
+                        <td>
+                        <%= link_to 'join', join_team_path(t) %>
+                        |
+                        <%= link_to 'leave', leave_team_path(t) %>
+                        </td>
+                        |
+                        <%= link_to 'submit', %>
                         <td> 
                             <% if policy(t).update? %>
                                 <%= link_to 'Edit', edit_team_path(t)%>

@@ -4,14 +4,13 @@ class User < ApplicationRecord
   has_secure_password
 
   after_initialize do
-    if self.new_record?
-      self.role ||= :standard
-    end
+    self.role ||= :standard if new_record?
   end
 
-  belongs_to :team, dependent: :destroy
-  enum role: [:standard, :judge, :admin]
-
-  
-  
+  validates :name, presence: true
+  validates :email, presence: true
+  validates :password, presence: true
+  validates :password_confirmation, presence: true
+  has_one :team
+  enum role: %i[standard judge admin]
 end

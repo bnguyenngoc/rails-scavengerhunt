@@ -27,6 +27,10 @@
                 <%= f.label :keyword %> 
                 <%= f.text_field :keyword, class: 'form-control' %> 
             </div>
+            <div class='form-group'>
+                <%= f.label :challenge_type %>
+                <%= f.select :challenge_type, Challenge.challenge_types.keys %>
+            </div>
             <div class="form-check">
                 <%= f.check_box :published, class: 'form-check-input' %>
                 <%= f.label :published, class: 'form-check-label' %>  

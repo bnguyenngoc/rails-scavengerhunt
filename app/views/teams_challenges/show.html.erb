@@ -1,0 +1,30 @@
+<div class="panel panel-default col-12 ">
+    <div class="panel-heading">
+      <h1><%= @team_challenge.challenge %></h1>
+    </div>
+    <hr>
+    <div class="panel-body col-6">
+    <%= render 'shared/errors', object: @team_challenge %>
+
+        <%= form_for @team_challenge, url: submit_challenge_path do |f| %>
+            <%= f.hidden_field :team_id, value: @team_challenge.team_id %>
+            <%= f.hidden_field :challenge_id, value: @team_challenge.challenge_id %>
+            <div class="form-group">
+                <%= f.label :score %> 
+                <%= f.number_field :score, class: 'form-control', required: true %>
+            </div>
+            <div class="form-group">
+                <%= f.label :submission %> 
+                <%= f.text_area :submission, class: 'form-control' %> 
+            </div>
+            <div class='form-group'>
+                <%= f.label :status %>
+                <%= f.select :status, TeamChallenge.statuses.keys %>
+            </div>
+            <div class="btn-group-justified">
+                <%=f.submit "Submit", class: 'btn btn-primary' %>
+                <%= link_to "Back", :back,  class: "btn btn-outline-danger"  %>
+            </div> 
+        <% end %>
+    </div>
+</div>

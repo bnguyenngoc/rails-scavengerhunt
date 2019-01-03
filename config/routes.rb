@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'teams_relationships/join'
-  get 'teams_relationships/leave'
+  get 'teams_challenges/show'
+  get 'teams_challenges/submit'
   root 'pages#main'
   get 'pages/main'
 
@@ -18,13 +18,18 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
 
   # routes for challenges
-  resources :challenges
+  resources :challenges do
+    member do
+      get 'show', to: 'teams_challenges#show'
+      post 'submit', to: 'teams_challenges#submit'
+    end
+  end
 
-  #routes for teams
+  # routes for teams
   resources :teams do
     member do
-      get 'join', to: 'teams_relationships#join'
-      get 'leave', to: 'teams_relationships#leave'
+      post 'join', to: 'teams_relationships#join'
+      post 'leave', to: 'teams_relationships#leave'
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

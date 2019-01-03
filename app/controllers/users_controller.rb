@@ -1,19 +1,19 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  def new 
+  def new
     @user = User.new
   end
 
   def create
     @user = User.new(user_params)
-    if User.find_by_email(user.email).present?
-      flash[:danger] = "Account with email already exists"
-      redirect_to '/signup'
-    end
-    if user.save
-      session[:user_id] = user.id
-      redirect_to '/'
+    #     if User.exists?(email: @user.email)
+    #       flash[:danger] = "Account with email already exists"
+    #       redirect_to '/signup'
+    #     end
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to root_path
     else
       redirect_to '/signup'
     end

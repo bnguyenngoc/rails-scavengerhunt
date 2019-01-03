@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class ChallengesControllerTest < ActionDispatch::IntegrationTest
+class TeamChallengeTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

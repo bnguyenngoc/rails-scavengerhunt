@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateChallenges < ActiveRecord::Migration[5.2]
   def change
     create_table :challenges do |t|
@@ -6,7 +8,7 @@ class CreateChallenges < ActiveRecord::Migration[5.2]
       t.text :judgenote
       t.integer :score
       t.string :keyword
-      t.boolean :published, :default => true
+      t.boolean :published, default: true
       t.timestamps
     end
   end

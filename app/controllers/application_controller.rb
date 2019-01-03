@@ -13,17 +13,14 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
-=begin
-  def authorize
-    redirect_to '/login' unless current_user
-  end
-=end
+  #   def authorize
+  #     redirect_to '/login' unless current_user
+  #   end
 
   private
 
   def user_not_authorized
-    flash[:danger] = "You are not authorized to perform this action."
+    flash[:danger] = 'You are not authorized to perform this action.'
     redirect_to(request.referrer || root_path)
   end
-
 end

@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 class Challenge < ApplicationRecord
-    
-    validates :title, presence: true
-    validates :score, presence: true
+  has_many :team_challenges
+  validates :title, presence: true
+  validates :score, presence: true
+  enum challenge_type: %i[flag text picture video live url file]
 end
