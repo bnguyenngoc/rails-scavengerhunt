@@ -1,11 +1,11 @@
-<div class="panel panel-default col-12 ">
-    <div class="panel-heading">
+<div class="card col-12" style="border: none">
+    <div class="card-header">
       <h1>Sign up</h1>
     </div>
 
     <%= render 'shared/errors', object: @user %>
 
-    <div class="panel-body col-6">
+    <div class="card-body col-12">
         <%= form_for @user, url: '/users' do |f| %> 
             <div class="form-group">
                 <%= f.label :name %>

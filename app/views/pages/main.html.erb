@@ -1,6 +1,16 @@
 <!-- Jumbotron Header -->
-      <header class="jumbotron my-4">
-        <h1 class="display-3">Welcome to Scavenger Hunt</h1>
-        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>
-        <%= link_to 'Sign up', '/signup', class: 'btn btn-primary btn-lg' %>
-      </header>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card" style="border: none;">
+      <div class="card-body col-12">
+        <header class="jumbotron col-12">
+          <h1 class="display-3">Welcome to Scavenger Hunt</h1>
+          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>
+        </header>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <%= render partial:  'users/new'%>
+  </div>
+</div>

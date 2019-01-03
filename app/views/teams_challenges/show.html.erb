@@ -29,6 +29,7 @@
 
     </div>
 </div>
+<% if @team_challenge.id.present?%>
 <div class="card card-group col-12" style="margin-top: 5px">
     <div class="card-body col-12">
         <%= render partial: 'notes/index', :locals => {:notes => @notes} %>
@@ -37,3 +38,4 @@
         <%= render partial: 'notes/new', :locals => {:note => @note}%>
     </div>
 </div>
+<% end %>
