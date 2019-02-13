@@ -1,11 +1,3 @@
-ifeq ($(LOCAL_UID),)
-export LOCAL_UID = $(shell id -u)
-endif
-
-ifeq ($(COMPOSE_PROJECT_NAME),)
-export COMPOSE_PROJECT_NAME = scavengerhunt
-endif
-
 build:
 	docker-compose -f docker-compose.yml build --no-cache
 	docker-compose run web rails db:create
